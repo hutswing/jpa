@@ -20,20 +20,11 @@ public class JpaMain {
 
         try {
 //
-            // 비영속
-            Member member = new Member();
-            member.setId(101L);
-            member.setName("HelloJPA");
-
             // 영속
-            System.out.println("=== Before ===");
-            em.persist(member);
-            System.out.println("=== After ===");
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZ");
 
-            Member findeMember = em.find(Member.class, 101L);
-
-            System.out.println("findeMember.getName() = " + findeMember.getName());
-            System.out.println("findeMember = " + findeMember.getId());
+            System.out.println("===========");
 
             tx.commit();
         } catch (Exception e) {
